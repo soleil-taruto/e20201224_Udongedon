@@ -613,9 +613,9 @@ namespace Charlotte.Games.Enemies
 			});
 		}
 
-		public static void DrawBombUsed()
+		public static void Drawノーミス()
 		{
-			if (Game.I.BombUsed)
+			if (Game.I.PlayerWasDead)
 				return;
 
 			const int DISPLAY_FRAME = 120;
@@ -623,9 +623,9 @@ namespace Charlotte.Games.Enemies
 
 			DDGround.EL.Add(() =>
 			{
-				DDPrint.SetPrint(DDConsts.Screen_W - 130, DDConsts.Screen_H - 30);
+				DDPrint.SetPrint(DDConsts.Screen_W - 120, DDConsts.Screen_H - 30);
 				DDPrint.SetBorder(new I3Color(0, 0, 255));
-				DDPrint.Print("BOMB NOT USED");
+				DDPrint.Print("ノーミス撃破");
 				DDPrint.Reset();
 
 				return DDEngine.ProcFrame < endFrame;

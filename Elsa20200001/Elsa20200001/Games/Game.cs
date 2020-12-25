@@ -69,7 +69,8 @@ namespace Charlotte.Games
 		public bool BossBattleStarted = false; // 開戦時のボス Enemy によってセットされる。
 		public bool BossKilled = false; // ボス Enemy の Kill() によってセットされる。
 		public double BackgroundSlideRate = 0.5;
-		public bool BombUsed = false; // ユーザー系ボムの Shot を使用すると true にセットされる。
+		//public bool BombUsed = false; // ユーザー系ボムの Shot を使用すると true にセットされる。
+		public bool PlayerWasDead = false; // 死亡すると true にセットされる。
 
 		public void Perform()
 		{
@@ -533,6 +534,7 @@ namespace Charlotte.Games
 					else
 					{
 						this.Player.DeadFrame = 1; // プレイヤー死亡
+						this.PlayerWasDead = true;
 					}
 				}
 
@@ -557,6 +559,8 @@ namespace Charlotte.Games
 
 				// ★★★ ゲームループの終わり ★★★
 			}
+
+			Ground.I.HiScore = this.Score; // 確実な同期
 
 			// ★★★★★ ステータス反映
 			{
@@ -743,8 +747,14 @@ namespace Charlotte.Games
 						{
 							DDGround.EL.Add(SCommon.Supplier(Effects.ボス回復(GameConsts.FIELD_L + enemy.X, GameConsts.FIELD_T + enemy.Y)));
 
+#if true
+							enemy.HP -= enemy.InitialHP;
+							enemy.HP = (int)(enemy.HP * 0.99);
+							enemy.HP += enemy.InitialHP;
+#else // old
 							enemy.HP++;
 							enemy.HP = Math.Min(enemy.HP, enemy.InitialHP);
+#endif
 
 							return;
 						}

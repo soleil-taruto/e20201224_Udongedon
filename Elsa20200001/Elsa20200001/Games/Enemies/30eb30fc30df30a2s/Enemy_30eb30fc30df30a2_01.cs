@@ -120,9 +120,9 @@ namespace Charlotte.Games.Enemies.ルーミアs
 
 			Ground.I.SE.SE_ENEMYKILLED.Play();
 			Game.I.Enemies.Add(new Enemy_ルーミア_02_04(this.X, this.Y, true));
-			Game.I.Score += 2500000 * (Game.I.BombUsed ? 1 : 2);
-			EnemyCommon.DrawBombUsed();
-			Game.I.BombUsed = false;
+			Game.I.Score += 2500000 * (Game.I.PlayerWasDead ? 1 : 2);
+			EnemyCommon.Drawノーミス();
+			Game.I.PlayerWasDead = false;
 		}
 
 		public override bool IsBoss()

@@ -151,9 +151,9 @@ namespace Charlotte.Games.Enemies.ルーミアs
 				score = 17500000;
 			}
 
-			Game.I.Score += score * (Game.I.BombUsed ? 1 : 2);
-			EnemyCommon.DrawBombUsed();
-			Game.I.BombUsed = false;
+			Game.I.Score += score * (Game.I.PlayerWasDead ? 1 : 2);
+			EnemyCommon.Drawノーミス();
+			Game.I.PlayerWasDead = false;
 		}
 
 		public override bool IsBoss()

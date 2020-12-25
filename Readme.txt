@@ -16,12 +16,15 @@ Visual C# 2010 Express
 ビルド済み配布物
 ----------------
 
-http://ornithopter.myhome.cx/anemoscope/Elsa/d20201224_Udongedon
+http://ornithopter.myhome.cx:58946/anemoscope/Elsa/d20201224_Udongedon
 
 
 質問など
 --------
 
-不明点・技術的な質問等ありましたら cerulean.charlottes@gmail.com までご連絡下さい。
+不明点・技術的な質問等ありましたら以下のメールアドレスまで気軽にご相談下さい。
 なお、頂いたメールは予告なく公開する場合があることをご承知下さい。
+
+メールアドレス：
+cerulean.charlottes@gmail.com
 

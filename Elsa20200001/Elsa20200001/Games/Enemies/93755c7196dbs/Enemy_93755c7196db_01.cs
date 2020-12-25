@@ -62,7 +62,8 @@ namespace Charlotte.Games.Enemies.鍵山雛s
 						Game.I.Shots.RemoveAll(v => v.Kind == Shot.Kind_e.BOMB);
 
 						// 念のためリセット
-						Game.I.BombUsed = false;
+						//Game.I.BombUsed = false;
+						Game.I.PlayerWasDead = false;
 					}
 					else if (TRANS_FRAME < frame)
 					{
@@ -84,9 +85,9 @@ namespace Charlotte.Games.Enemies.鍵山雛s
 
 			Ground.I.SE.SE_ENEMYKILLED.Play();
 			Game.I.Enemies.Add(new Enemy_鍵山雛_02(this.X, this.Y));
-			Game.I.Score += 5000000 * (Game.I.BombUsed ? 1 : 2);
-			EnemyCommon.DrawBombUsed();
-			Game.I.BombUsed = false;
+			Game.I.Score += 5000000 * (Game.I.PlayerWasDead ? 1 : 2);
+			EnemyCommon.Drawノーミス();
+			Game.I.PlayerWasDead = false;
 		}
 
 		public override bool IsBoss()
