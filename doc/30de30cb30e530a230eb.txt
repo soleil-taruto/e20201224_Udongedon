@@ -1,0 +1,138 @@
+===============================================================================
+
+　Udongedon / version $version$
+　　　　　　　　　　　　　　　　　　　　　　　　　　(C) 2020 cerulean.charlotte
+
+===============================================================================
+
+
+■概要
+
+　東方っぽい縦スクロールシューティングの試作版です。
+　全２ステージ
+
+　難易度は、東方のイージーかノーマルくらい。
+
+　ゲームパッドの使用を推奨します。
+
+　当ゲームはソースコードを公開しています。
+　ご興味ありましたら、以下のページへお越しください。
+　https://github.com/soleil-taruto/e20201224_Udongedon
+
+
+■起動方法
+
+　Game.exe を実行して下さい。
+
+
+■操作方法
+
+　カーソル
+
+　Z　　低速移動 / 決定
+　X　　ショット / キャンセル
+　C　　ボム
+　D　　会話スキップ
+　F　　当たり判定表示（デバッグ用のチート機能）
+
+　SPACE　　ポーズ / ポーズ解除
+
+　PAGE-UP　　　パワーアップ（デバッグ用のチート機能）
+　PAGE-DOWN　　パワーダウン（デバッグ用のチート機能）
+
+　エスケープキーを押すと、いつでも終了できます。
+
+
+　★ゲームパッドの使用を推奨します。
+
+　　タイトルメニューの 設定 > パッドのボタン設定 よりボタン配置を変更できます。
+
+
+■プレイのコツとか
+
+　東方と同じく
+　・低速移動すると周囲のアイテムを吸収します。
+　・画面上部で低速移動すると画面上のアイテムを回収できます。
+
+　ステージ２では青色の敵弾を低速移動で吸収 (武器吸収) できます。
+　敵弾に付いている番号が武器の種類です。
+　最後に吸収した武器によって攻撃手段が追加されますが、被弾するとなくなります。
+
+　ボスにボムは効きません。
+
+
+■既知の問題点
+
+　リソースを泥縄式にロードしているので、プレイ中に処理落ちすることがある。
+
+　ゲームバランスがアレ・・・
+
+
+■素材（敬称略）
+
+　●立ち絵
+
+　　dairi
+　　https://www.pixiv.net/users/4920496
+
+　●自機・メディスン
+
+　　月の鍵　蒼烏
+　　https://danmakufu.wiki.fc2.com/wiki/%E8%87%AA%E6%A9%9F
+
+　●システム画像
+
+　　フキダシデザイン
+　　https://fukidesign.com/e0165/
+
+　　ぴぽや倉庫
+　　http://piposozai.blog76.fc2.com/
+
+　●音楽
+
+　　Mirror of ES
+　　http://commons.nicovideo.jp/user/97771
+
+　　REDA
+　　http://commons.nicovideo.jp/material/nc136551
+
+　　とぼそ
+　　https://commons.nicovideo.jp/material/nc161701
+
+　　フリー音楽素材 H/MIX GALLERY
+　　http://www.hmix.net/
+
+　　魔王魂
+　　http://maoudamashii.jokersounds.com/
+
+　●効果音
+
+　　小森平
+　　http://taira-komori.jpn.org/
+
+　●旧ゲーム(2013年頃に制作したテストプログラム)より引き継いだリソース
+
+　　リヒト
+　　http://extramebe.blog114.fc2.com/
+
+　　ゲーム開発日記
+　　http://dvdm.blog134.fc2.com/
+
+　　material world
+　　http://members.jcom.home.ne.jp/hide.mats/index.htm
+
+　　KUU(空羅)
+　　http://rikuura.blog5.fc2.com/page-1.html
+
+　　speckyboy
+　　http://speckyboy.com/2010/07/28/50-tileable-and-seamless-pattern-sets-500-patterns/
+
+　　北海のヌー
+　　http://www.danmakufu.net/?%E5%88%B6%E4%BD%9C%2F%E3%83%AA%E3%83%B3%E3%82%AF#e7f23a00
+
+　　KENTARO
+　　http://www.pixiv.net/member.php?id=67804
+
+　　兜虫とパンケーキ
+　　http://beetlepancake.web.fc2.com/
+
