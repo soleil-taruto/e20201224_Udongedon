@@ -20,6 +20,14 @@
 　https://github.com/soleil-taruto/e20201224_Udongedon
 
 
+　●著作権に関する記載
+
+　　当ゲームは、上海アリス幻樂団 制作 東方Project の二次創作作品になります。
+
+　　東方Projectの二次創作ガイドライン
+　　https://touhou-project.news/guideline/
+
+
 ■起動方法
 
 　Game.exe を実行して下さい。
