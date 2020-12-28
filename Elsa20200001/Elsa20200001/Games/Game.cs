@@ -184,8 +184,10 @@ namespace Charlotte.Games
 					if (GameConsts.PLAYER_DEAD_FRAME_MAX < frm)
 					{
 						if (this.Zanki <= 0) // 残機不足のため終了
+						{
+							GameMaster.ReturnToTitleMenu = true;
 							break;
-
+						}
 						this.Zanki--;
 						this.Player.Reset(true);
 						goto startBornPlayer;
@@ -560,7 +562,7 @@ namespace Charlotte.Games
 				// ★★★ ゲームループの終わり ★★★
 			}
 
-			Ground.I.HiScore = this.Score; // 確実な同期
+			DDUtils.Maxim(ref Ground.I.HiScore, this.Score); // 確実な同期
 
 			// ★★★★★ ステータス反映
 			{
