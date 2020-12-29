@@ -137,23 +137,26 @@ namespace Charlotte.Games
 		{
 			D2Point ptShift = new D2Point(0, 0);
 
-			foreach (Shot shot in Game.I.Shots.Iterate())
+			if (Ground.I.自弾背景歪み)
 			{
-				D2Point shotPt = new D2Point(shot.X, shot.Y);
-				double distance = DDUtils.GetDistance(pt, shotPt);
-
-				if (distance < 100.0)
+				foreach (Shot shot in Game.I.Shots.Iterate())
 				{
-					// To 0.0 ～ 1.0
-					distance /= 100.0;
-					distance = 1.0 - distance;
+					D2Point shotPt = new D2Point(shot.X, shot.Y);
+					double distance = DDUtils.GetDistance(pt, shotPt);
 
-					ptShift.X += (shot.X - shot.LastX) * distance * shot.AttackPoint * 0.01;
-					ptShift.Y += (shot.Y - shot.LastY) * distance * shot.AttackPoint * 0.01;
+					if (distance < 100.0)
+					{
+						// To 0.0 ～ 1.0
+						distance /= 100.0;
+						distance = 1.0 - distance;
+
+						ptShift.X += (shot.X - shot.LastX) * distance * shot.AttackPoint * 0.01;
+						ptShift.Y += (shot.Y - shot.LastY) * distance * shot.AttackPoint * 0.01;
+					}
 				}
 			}
 
-			// ここへ追加..
+			// 新しい効果をここへ追加..
 
 			return ptShift;
 		}

@@ -78,6 +78,7 @@ namespace Charlotte.GameCommons
 				//lines.Add("Donut3-SaveData"); // Dummy
 
 				lines.Add("" + Ground.I.HiScore);
+				lines.Add("" + (Ground.I.自弾背景歪み ? 1 : 0));
 
 				// 新しい項目をここへ追加...
 
@@ -172,6 +173,7 @@ namespace Charlotte.GameCommons
 					//DDUtils.Noop(lines[c++]); // Dummy
 
 					Ground.I.HiScore = long.Parse(lines[c++]);
+					Ground.I.自弾背景歪み = int.Parse(lines[c++]) != 0;
 
 					// 新しい項目をここへ追加...
 				}

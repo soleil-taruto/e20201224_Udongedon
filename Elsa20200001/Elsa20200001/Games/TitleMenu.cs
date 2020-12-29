@@ -27,6 +27,8 @@ namespace Charlotte.Games
 
 		public void Perform()
 		{
+			WallDrawerTask.響子Task.Touch(); // 響子の画像を全部触っておく
+
 			DDCurtain.SetCurtain();
 			DDEngine.FreezeInput();
 
@@ -48,7 +50,7 @@ namespace Charlotte.Games
 			this.SimpleMenu.WallColor = new I3Color(0, 70, 140);
 			//this.SimpleMenu.WallPicture = Ground.I.Picture.P_TITLE_WALL;
 			//this.SimpleMenu.WallCurtain = -0.8;
-			this.SimpleMenu.WallDrawer = this.DrawWall;
+			this.SimpleMenu.WallDrawer = () => this.WallDrawer.Task();
 
 			for (; ; )
 			{
@@ -88,50 +90,79 @@ namespace Charlotte.Games
 			DDEngine.FreezeInput();
 		}
 
-		private DDTaskList DWTasks = new DDTaskList();
+		#region WallDrawer
 
-		private void DrawWall()
+		private WallDrawerTask WallDrawer = new WallDrawerTask();
+
+		private class WallDrawerTask : DDTask
 		{
-			if (DDEngine.ProcFrame % 130 == 0)
-				this.DWTasks.Add(SCommon.Supplier(this.E_DWTask()));
+			public const double CURTAIN_W_DEF = DDConsts.Screen_W / 2;
 
-			this.DWTasks.ExecuteAllTask();
+			public double TargetCurtain_W = CURTAIN_W_DEF;
+			private double Curtain_W = 0.0;
 
-			DDDraw.SetAlpha(0.5);
-			DDDraw.SetBright(0, 0, 0);
-			DDDraw.DrawRect(DDGround.GeneralResource.WhiteBox, 0, 0, DDConsts.Screen_W / 2, DDConsts.Screen_H);
-			DDDraw.Reset();
-		}
+			private DDTaskList EL = new DDTaskList();
 
-		private IEnumerable<bool> E_DWTask()
-		{
-			const string PIC_PREFIX = @"e20200003_dat\dairi\67504816_p";
-			const string PIC_SUFFIX = ".png";
-			const int PIC_INDEX_MIN = 0;
-			const int PIC_INDEX_MAX = 10;
-
-			// Touch -- ロードする度にガクガクするので、最初のタイミングで全部触っておく
+			public override IEnumerable<bool> E_Task()
 			{
-				for (int index = PIC_INDEX_MIN; index <= PIC_INDEX_MAX; index++)
-					DDCCResource.GetPicture(PIC_PREFIX + index + PIC_SUFFIX).GetHandle();
+				for (int frame = 0; ; frame++)
+				{
+					if (frame % 130 == 0)
+						this.EL.Add(new 響子Task().Task);
+
+					this.EL.ExecuteAllTask();
+
+					DDUtils.Approach(ref this.Curtain_W, this.TargetCurtain_W, 0.9);
+
+					DDDraw.SetAlpha(0.5);
+					DDDraw.SetBright(0, 0, 0);
+					DDDraw.DrawRect(DDGround.GeneralResource.WhiteBox, 0, 0, this.Curtain_W, DDConsts.Screen_H);
+					DDDraw.Reset();
+
+					yield return true;
+				}
 			}
 
-			DDPicture picture = DDCCResource.GetPicture(PIC_PREFIX + DDUtils.Random.GetRange(PIC_INDEX_MIN, PIC_INDEX_MAX) + PIC_SUFFIX);
-			double x = DDConsts.Screen_W + 300.0;
-			double y = DDConsts.Screen_H - 200.0;
-
-			for (; ; )
+			public class 響子Task : DDTask
 			{
-				x -= 3.0;
+				public override IEnumerable<bool> E_Task()
+				{
+					DDPicture picture = GetPicture(DDUtils.Random.GetRange(PIC_INDEX_MIN, PIC_INDEX_MAX));
+					double x = DDConsts.Screen_W + 300.0;
+					double y = DDConsts.Screen_H - 200.0;
 
-				if (x < -300.0)
-					break;
+					for (; ; )
+					{
+						x -= 3.0;
 
-				DDDraw.DrawCenter(picture, x, y);
+						if (x < -300.0)
+							break;
 
-				yield return true;
+						DDDraw.DrawCenter(picture, x, y);
+
+						yield return true;
+					}
+				}
+
+				private const string PIC_PREFIX = @"e20200003_dat\dairi\67504816_p";
+				private const string PIC_SUFFIX = ".png";
+				private const int PIC_INDEX_MIN = 0;
+				private const int PIC_INDEX_MAX = 10;
+
+				private static DDPicture GetPicture(int index)
+				{
+					return DDCCResource.GetPicture(PIC_PREFIX + index + PIC_SUFFIX);
+				}
+
+				public static void Touch()
+				{
+					for (int index = PIC_INDEX_MIN; index <= PIC_INDEX_MAX; index++)
+						GetPicture(index).GetHandle();
+				}
 			}
 		}
+
+		#endregion
 
 		private void SelectStage()
 		{
@@ -186,22 +217,25 @@ namespace Charlotte.Games
 
 		private void Setting()
 		{
+			this.WallDrawer.TargetCurtain_W = 600;
+
 			DDCurtain.SetCurtain();
 			DDEngine.FreezeInput();
-
-			string[] items = new string[]
-			{
-				"パッドのボタン設定",
-				"ウィンドウサイズ変更",
-				"ＢＧＭ音量",
-				"ＳＥ音量",
-				"戻る",
-			};
 
 			int selectIndex = 0;
 
 			for (; ; )
 			{
+				string[] items = new string[]
+				{
+					"パッドのボタン設定",
+					"ウィンドウサイズ変更",
+					"ＢＧＭ音量",
+					"ＳＥ音量",
+					"自弾の動きに合わせて背景が歪む効果 [ 現在の設定：" + (Ground.I.自弾背景歪み ? "有効" : "無効") + " ]",
+					"戻る",
+				};
+
 				selectIndex = this.SimpleMenu.Perform("設定", items, selectIndex);
 
 				switch (selectIndex)
@@ -238,6 +272,10 @@ namespace Charlotte.Games
 						break;
 
 					case 4:
+						Ground.I.自弾背景歪み ^= true;
+						break;
+
+					case 5:
 						goto endMenu;
 
 					default:
@@ -246,6 +284,8 @@ namespace Charlotte.Games
 			}
 		endMenu:
 			DDEngine.FreezeInput();
+
+			this.WallDrawer.TargetCurtain_W = WallDrawerTask.CURTAIN_W_DEF; // restore
 		}
 
 		private void LeaveTitleMenu()

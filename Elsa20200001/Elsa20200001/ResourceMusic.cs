@@ -23,7 +23,7 @@ namespace Charlotte
 		{
 			//this.Dummy.Volume = 0.1;
 
-			this.MUS_BOSS_01.Volume = 1.0;
+			//this.MUS_BOSS_01.Volume = 1.0; // リソースの音量を上げた。@ 2020.12.29
 		}
 	}
 }
