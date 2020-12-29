@@ -16,10 +16,6 @@ Visual C# 2010 Express<br/>
 http://ornithopter.myhome.cx:58946/anemoscope/Elsa/d20201224_Udongedon<br/>
 <br/>
 
-## 問い合わせなど
-不明点・技術的な質問等ありましたら以下のメールアドレスまでご連絡下さい。<br/>
-なお、頂いたメールは予告なく公開する場合があることをご承知下さい。<br/>
-<br/>
-メールアドレス：<br/>
-cerulean.charlottes@gmail.com<br/>
+## 問い合わせ先
+不明点・技術的な質問等ありましたら cerulean.charlottes@gmail.com までご連絡下さい。<br/>
 <br/>
