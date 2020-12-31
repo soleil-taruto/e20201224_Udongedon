@@ -68,12 +68,26 @@ namespace Charlotte.Games
 
 				DDEngine.EachFrame();
 			}
-			foreach (DDScene scene in DDSceneUtils.Create(90))
+
 			{
-				DDCurtain.DrawCurtain();
-				DDDraw.DrawCenter(Ground.I.Picture.Copyright, DDConsts.Screen_W / 2, DDConsts.Screen_H / 2);
-				DDEngine.EachFrame();
+				long endLoopTime = long.MaxValue;
+
+				for (int frame = 0; ; frame++)
+				{
+					if (endLoopTime < DDEngine.FrameStartTime)
+						break;
+
+					if (frame == 1)
+					{
+						endLoopTime = DDEngine.FrameStartTime + 1500;
+						DDTouch.Touch();
+					}
+					DDCurtain.DrawCurtain();
+					DDDraw.DrawCenter(Ground.I.Picture.Copyright, DDConsts.Screen_W / 2, DDConsts.Screen_H / 2);
+					DDEngine.EachFrame();
+				}
 			}
+
 			foreach (DDScene scene in DDSceneUtils.Create(60))
 			{
 				DDCurtain.DrawCurtain();

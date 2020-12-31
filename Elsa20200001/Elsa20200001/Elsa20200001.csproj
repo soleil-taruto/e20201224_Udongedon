@@ -90,6 +90,7 @@
     <Compile Include="Commons\WorkingDir.cs" />
     <Compile Include="Consts.cs" />
     <Compile Include="GameCommons\DDTask.cs" />
+    <Compile Include="GameCommons\DDTouch.cs" />
     <Compile Include="Games\Enemies\Enemy_0001B.cs" />
     <Compile Include="Games\Enemies\Enemy_JackOLantern_02.cs" />
     <Compile Include="Games\Enemies\ルーミアs\EnemyCommon_ルーミア.cs" />

@@ -27,8 +27,6 @@ namespace Charlotte.Games
 
 		public void Perform()
 		{
-			WallDrawerTask.響子Task.Touch(); // 響子の画像を全部触っておく
-
 			DDCurtain.SetCurtain();
 			DDEngine.FreezeInput();
 
@@ -160,6 +158,11 @@ namespace Charlotte.Games
 						GetPicture(index).GetHandle();
 				}
 			}
+		}
+
+		public static void TouchWallDrawerResources()
+		{
+			WallDrawerTask.響子Task.Touch(); // 響子の画像を全部触っておく
 		}
 
 		#endregion

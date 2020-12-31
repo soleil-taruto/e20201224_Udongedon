@@ -43,7 +43,7 @@ namespace Charlotte.Games.Enemies.鍵山雛s
 			Game.I.EL_AfterDrawWalls.Add(SCommon.Supplier(this.E_魔法陣_V(this.X, this.Y)));
 
 			{
-				const double SPEED = 4.0;
+				const double SPEED = 3.0;
 
 				if (this.X < 0.0) // ? フィールド左側に衝突
 				{
@@ -58,12 +58,12 @@ namespace Charlotte.Games.Enemies.鍵山雛s
 				else if (this.Y < 0.0) // ? フィールド上側に衝突
 				{
 					this.Speed = new D2Point(0.0, SPEED);
-					this.Color = EnemyCommon.TAMA_COLOR_e.WHITE;
+					this.Color = EnemyCommon.TAMA_COLOR_e.ORANGE;
 				}
 				else // ? フィールド下側に衝突
 				{
 					this.Speed = new D2Point(0.0, -SPEED);
-					this.Color = EnemyCommon.TAMA_COLOR_e.WHITE;
+					this.Color = EnemyCommon.TAMA_COLOR_e.ORANGE;
 				}
 			}
 
@@ -72,8 +72,18 @@ namespace Charlotte.Games.Enemies.鍵山雛s
 				this.X += this.Speed.X;
 				this.Y += this.Speed.Y;
 
-				DDDraw.DrawBegin(EnemyCommon.GetTamaPicture(EnemyCommon.TAMA_KIND_e.DOUBLE, this.Color), this.X, this.Y);
-				DDDraw.DrawEnd();
+#if true
+				// 他の敵弾より上に(後に)描画する。
+				// -- 見えやすいように
+				//
+				Game.I.EnemyEffects.Add(() =>
+				{
+					DDDraw.DrawCenter(EnemyCommon.GetTamaPicture(EnemyCommon.TAMA_KIND_e.DOUBLE, this.Color), this.X, this.Y);
+					return false;
+				});
+#else // old
+				DDDraw.DrawCenter(EnemyCommon.GetTamaPicture(EnemyCommon.TAMA_KIND_e.DOUBLE, this.Color), this.X, this.Y);
+#endif
 
 				this.Crash = DDCrashUtils.Circle(new D2Point(this.X, this.Y), 6.0);
 

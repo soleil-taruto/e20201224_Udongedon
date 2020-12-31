@@ -61,11 +61,11 @@ namespace Charlotte
 		public DDPicture P_DIGITS_DDY = DDPictureLoaders.Standard(@"e20200003_dat\ぴぽや倉庫\suuji-font\suuji16x32_01.png");
 		public DDPicture P_DIGITS_DY = DDPictureLoaders.Standard(@"e20200003_dat\ぴぽや倉庫\suuji-font\suuji16x32_02.png");
 		public DDPicture P_DIGITS_Y = DDPictureLoaders.Standard(@"e20200003_dat\ぴぽや倉庫\suuji-font\suuji16x32_03.png");
-		public DDPicture P_WALL = DDPictureLoaders.Standard(@"e20200003_dat\Shoot_old_Resource\run\22350006_big_p26.jpg");
+		//public DDPicture P_WALL = DDPictureLoaders.Standard(@"e20200003_dat\Shoot_old_Resource\run\22350006_big_p26.jpg");
 		//public DDPicture P_FAIRYETC = DDPictureLoaders.Standard(@"e20200003_dat\Shoot_old_Resource\th_fuuchi-sozai\img\dot-kaze-ti.png"); // del
 		public DDPicture P_FAIRYETC = DDPictureLoaders.RGBToTrans(@"e20200003_dat\Shoot_old_Resource\th_fuuchi-sozai\img\dot-kaze-ti.png", new I3Color(0, 0, 0));
 		public DDPicture P_MAHOJIN_HAJIKE = DDPictureLoaders.Standard(@"e20200003_dat\ぴぽや倉庫\sentou-effect-anime1\640x480\pipo-btleffect007.png");
-		public DDPicture P_TITLE_WALL = DDPictureLoaders.Standard(@"e20200003_dat\Shoot_old_Resource\run\22350006_big_p20.jpg");
+		//public DDPicture P_TITLE_WALL = DDPictureLoaders.Standard(@"e20200003_dat\Shoot_old_Resource\run\22350006_big_p20.jpg");
 		public DDPicture P_FUJINBOSS = DDPictureLoaders.RGBToTrans(@"e20200003_dat\Shoot_old_Resource\th_fuuchi-sozai\img\dot-kaze-ti2.png", new I3Color(0, 0, 0));
 	}
 }

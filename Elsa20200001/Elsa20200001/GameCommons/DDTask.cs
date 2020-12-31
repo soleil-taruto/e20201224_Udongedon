@@ -17,9 +17,9 @@ namespace Charlotte.GameCommons
 	/// </summary>
 	public abstract class DDTask
 	{
-		public bool Execute()
+		public void Execute()
 		{
-			return this.Task();
+			this.Task();
 		}
 
 		private Func<bool> _task = null;

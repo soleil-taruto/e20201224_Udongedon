@@ -11,7 +11,11 @@ namespace Charlotte.Games.Scripts
 	{
 		protected override IEnumerable<bool> E_EachFrame()
 		{
+			Ground.I.Music.MUS_BOSS_01.Play();
+
 			Game.I.Walls.Add(new Wall_Dark());
+			Game.I.Walls.Add(new Wall_B11001());
+			Game.I.Walls.Add(new Wall_B11002());
 
 			Game.I.Enemies.Add(new Enemy_鍵山雛_02(GameConsts.FIELD_W / 2, GameConsts.FIELD_H / 7));
 

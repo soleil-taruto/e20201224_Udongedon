@@ -43,6 +43,28 @@ namespace Charlotte
 				// < アプリ固有
 			}
 
+			#region Charge To DDTouch
+
+			// アプリ固有 >
+
+			DDTouch.Add(TitleMenu.TouchWallDrawerResources);
+
+			// 個別に設定(例)
+			//DDTouch.Add(Ground.I.Picture.P_KOAKUMA_P1);
+			//DDTouch.Add(Ground.I.Music.MUS_TITLE);
+			//DDTouch.Add(Ground.I.SE.SE_KASURI);
+
+			// 全部設定
+			DDTouch.AddAllPicture();
+			DDTouch.AddAllMusic();
+			DDTouch.AddAllSE();
+
+			// < アプリ固有
+
+			#endregion
+
+			//DDTouch.Touch(); // moved -> Logo
+
 			if (ProcMain.ArgsReader.ArgIs("//D")) // 引数は適当な文字列
 			{
 				Main4_Debug();
@@ -57,12 +79,12 @@ namespace Charlotte
 		{
 			// ---- choose one ----
 
-			Main4_Release();
+			//Main4_Release();
 			//new Test0001().Test01();
 			//new TitleMenuTest().Test01();
 			//new GameTest().Test01();
 			//new GameTest().Test02();
-			//new GameTest().Test03(); // スクリプトを選択
+			new GameTest().Test03(); // スクリプトを選択
 
 			// ----
 		}
