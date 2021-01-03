@@ -128,6 +128,21 @@ namespace Charlotte.Games.Enemies
 		protected abstract IEnumerable<bool> E_Draw();
 
 		/// <summary>
+		/// Killed 複数回実行回避のため、DeadFlag をチェックして Killed を実行する。
+		/// 注意：HP を減らして -1 になったとき Kill を呼んでも(既に死亡状態のため) Killed は実行されない！
+		/// -- HP == -1 の可能性がある場合は -- Kill(true);
+		/// </summary>
+		/// <param name="force">強制モード</param>
+		public void Kill(bool force = false)
+		{
+			if (force || this.HP != -1) // ? 強制モード || 生存
+			{
+				this.HP = -1; // 死亡
+				this.Killed();
+			}
+		}
+
+		/// <summary>
 		/// 撃破された時に呼び出される。
 		/// -- アイテムの場合はプレイヤーが取得した時に呼び出される。
 		/// 処理すべきこと(例)：
@@ -135,7 +150,7 @@ namespace Charlotte.Games.Enemies
 		/// -- ドロップアイテムを出現させる。
 		/// -- スコア加算
 		/// </summary>
-		public abstract void Killed();
+		protected abstract void Killed();
 
 		/// <summary>
 		/// 自弾(プレイヤーの弾)によってダメージを受けた時に呼び出される。

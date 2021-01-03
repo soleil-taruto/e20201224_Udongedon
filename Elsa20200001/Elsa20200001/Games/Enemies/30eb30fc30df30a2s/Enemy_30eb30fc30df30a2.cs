@@ -36,7 +36,7 @@ namespace Charlotte.Games.Enemies.ルーミアs
 			Game.I.Enemies.Add(new Enemy_ルーミア_01(this.X, this.Y));
 		}
 
-		public override void Killed()
+		protected override void Killed()
 		{
 			throw null; // never
 		}

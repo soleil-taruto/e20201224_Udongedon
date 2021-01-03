@@ -121,7 +121,7 @@ namespace Charlotte.Games.Enemies
 			}
 		}
 
-		public override void Killed()
+		protected override void Killed()
 		{
 			Ground.I.SE.SE_ITEMGOT.Play();
 

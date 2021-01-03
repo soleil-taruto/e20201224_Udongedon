@@ -35,11 +35,14 @@ namespace Charlotte.GameCommons
 			FrameStartTime = currTime;
 		}
 
+		public static Action DispDebug = () => { };
+
 		public static void EachFrame()
 		{
 			//Ground.EL.ExecuteAllTask();
 
 			DDGround.EL.ExecuteAllTask();
+			DispDebug();
 			DDMouse.PosChanged_Delay();
 			DDCurtain.EachFrame();
 

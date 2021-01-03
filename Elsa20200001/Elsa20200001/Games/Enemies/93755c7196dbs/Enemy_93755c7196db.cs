@@ -35,7 +35,7 @@ namespace Charlotte.Games.Enemies.鍵山雛s
 			Game.I.Enemies.Add(new Enemy_鍵山雛_01(this.X, this.Y));
 		}
 
-		public override void Killed()
+		protected override void Killed()
 		{
 			throw null; // never
 		}

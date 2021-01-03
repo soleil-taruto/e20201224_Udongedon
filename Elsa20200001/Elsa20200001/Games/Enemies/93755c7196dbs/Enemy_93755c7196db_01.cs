@@ -79,7 +79,7 @@ namespace Charlotte.Games.Enemies.鍵山雛s
 			}
 		}
 
-		public override void Killed()
+		protected override void Killed()
 		{
 			// 次の形態へ移行する。
 

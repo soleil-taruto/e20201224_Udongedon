@@ -40,7 +40,7 @@ namespace Charlotte.Games.Enemies.鍵山雛s
 			}
 		}
 
-		public override void Killed()
+		protected override void Killed()
 		{
 			EnemyCommon.Killed(this, 0);
 		}

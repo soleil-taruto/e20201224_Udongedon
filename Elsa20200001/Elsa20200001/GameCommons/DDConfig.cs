@@ -28,7 +28,12 @@ namespace Charlotte.GameCommons
 		public static void Load()
 		{
 			if (!File.Exists(DDConsts.ConfigFile))
+			{
+				if (!File.Exists(SCommon.EraseExt(ProcMain.SelfFile) + ".pdb")) // ? 開発環境ではないっぽい -> リリース版なのに設定ファイルが無いのは可怪しいのでエラーにする。
+					throw new DDError();
+
 				return;
+			}
 
 			string[] lines = File.ReadAllLines(DDConsts.ConfigFile, SCommon.ENCODING_SJIS).Select(line => line.Trim()).Where(line => line != "" && line[0] != ';').ToArray();
 			int c = 0;

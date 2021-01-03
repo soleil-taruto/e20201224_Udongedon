@@ -102,9 +102,7 @@ namespace Charlotte.Games
 				if (!this.Script.EachFrame()) // シナリオ進行
 					break;
 
-				// ********
-				// **** チート ****
-				// ********
+				if (DDConfig.LOG_ENABLED) // チート機能
 				{
 					if (DDKey.IsPound(DX.KEY_INPUT_PGUP))
 					{
@@ -445,7 +443,7 @@ namespace Charlotte.Games
 					this.EnemyEffects.ExecuteAllTask();
 					this.PlayerEffects.ExecuteAllTask();
 
-					if (1 <= DDInput.R.GetInput()) // 当たり判定表示(チート)
+					if (DDConfig.LOG_ENABLED && 1 <= DDInput.R.GetInput()) // 当たり判定表示(チート)
 					{
 						this.Draw当たり判定();
 					}
@@ -775,8 +773,7 @@ namespace Charlotte.Games
 			}
 			else // ? 死亡した。
 			{
-				enemy.HP = -1; // 死亡をセットする。
-				enemy.Killed();
+				enemy.Kill(true);
 			}
 		}
 
@@ -799,8 +796,7 @@ namespace Charlotte.Games
 					{
 						// アイテム回収
 						{
-							enemy.HP = -1;
-							enemy.Killed();
+							enemy.Kill();
 						}
 					}
 					break;

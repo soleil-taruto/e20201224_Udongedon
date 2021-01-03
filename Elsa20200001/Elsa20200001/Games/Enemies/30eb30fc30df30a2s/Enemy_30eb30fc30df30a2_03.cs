@@ -96,7 +96,7 @@ namespace Charlotte.Games.Enemies.ルーミアs
 			}
 		}
 
-		public override void Killed()
+		protected override void Killed()
 		{
 			// 次の形態へ移行する。
 

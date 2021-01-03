@@ -45,25 +45,41 @@ namespace Charlotte
 
 			#region Charge To DDTouch
 
-			// アプリ固有 >
+			// DDCCResource のための Touch
+			// -- ロードされれば DDPictureUtils.Pictures に追加されるので、ここで呼ぶだけで良い。
+			TitleMenu.TouchWallDrawerResources();
 
-			DDTouch.Add(TitleMenu.TouchWallDrawerResources);
-
-			// 個別に設定(例)
-			//DDTouch.Add(Ground.I.Picture.P_KOAKUMA_P1);
-			//DDTouch.Add(Ground.I.Music.MUS_TITLE);
-			//DDTouch.Add(Ground.I.SE.SE_KASURI);
+			// 個別に設定
+			//DDTouch.Add(Ground.I.Picture.XXX);
+			//DDTouch.Add(Ground.I.Music.XXX);
+			//DDTouch.Add(Ground.I.SE.XXX);
 
 			// 全部設定
 			DDTouch.AddAllPicture();
 			DDTouch.AddAllMusic();
 			DDTouch.AddAllSE();
 
-			// < アプリ固有
-
 			#endregion
 
 			//DDTouch.Touch(); // moved -> Logo
+
+			if (DDConfig.LOG_ENABLED)
+			{
+				DDEngine.DispDebug = () =>
+				{
+					DDPrint.SetPrint();
+					DDPrint.SetBorder(new I3Color(0, 0, 0));
+
+					DDPrint.Print(string.Join(" ",
+						DDEngine.FrameProcessingMillis,
+						DDEngine.FrameProcessingMillis_Worst
+
+						// デバッグ表示する情報をここへ追加..
+						));
+
+					DDPrint.Reset();
+				};
+			}
 
 			if (ProcMain.ArgsReader.ArgIs("//D")) // 引数は適当な文字列
 			{

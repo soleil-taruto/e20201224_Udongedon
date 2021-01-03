@@ -141,7 +141,11 @@ namespace Charlotte.GameCommons
 
 				DDPrint.SetPrint(this.X, this.Y, this.YStep);
 				//DDPrint.SetPrint(16, 16, 32); // old
-				DDPrint.Print(title + "　(Mouse=" + this.MouseUsable + ")");
+				DDPrint.Print(
+					DDConfig.LOG_ENABLED ?
+					title + "　(Mouse=" + this.MouseUsable + ")" :
+					title
+					);
 				DDPrint.PrintRet();
 
 				for (int c = 0; c < items.Length; c++)

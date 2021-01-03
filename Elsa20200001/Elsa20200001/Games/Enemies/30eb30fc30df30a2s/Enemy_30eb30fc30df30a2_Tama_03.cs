@@ -61,7 +61,7 @@ namespace Charlotte.Games.Enemies.ルーミアs
 			}
 		}
 
-		public override void Killed()
+		protected override void Killed()
 		{
 			EnemyCommon.Killed(this, 0);
 		}

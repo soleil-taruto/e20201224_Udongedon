@@ -62,7 +62,7 @@ namespace Charlotte.Games.Enemies
 			}
 		}
 
-		public override void Killed()
+		protected override void Killed()
 		{
 			EnemyCommon.Killed(this, this.DropItemMode);
 			Game.I.Score += 5000;
