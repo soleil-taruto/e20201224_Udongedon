@@ -15,7 +15,7 @@ COPY /B Elsa20200001\Elsa20200001\bin\Release\DxLib_x64.dll out
 COPY /B Elsa20200001\Elsa20200001\bin\Release\DxLibDotNet.dll out
 
 C:\Factory\Tools\xcp.exe doc out
+C:\Factory\Elsa\EditConfig.exe out\Config.conf ;[LOG_ENABLED_MARK] 1
 COPY /B AUTHORS out
-COPY /B LICENSE out
 
 C:\Factory\SubTools\zip.exe /PE- /RVE- %* /G out Udongedon

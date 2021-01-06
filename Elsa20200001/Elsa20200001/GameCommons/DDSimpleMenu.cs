@@ -207,7 +207,7 @@ namespace Charlotte.GameCommons
 				//new ButtonInfo(DDInput.E, ""),
 				//new ButtonInfo(DDInput.F, ""),
 				new ButtonInfo(DDInput.L, "会話スキップ"),
-				new ButtonInfo(DDInput.R, "当たり判定表示(チート)"),
+				new ButtonInfo(DDInput.R, "当たり判定表示(デバッグ用)"),
 				new ButtonInfo(DDInput.PAUSE, "ポーズボタン"),
 				//new ButtonInfo(DDInput.START, ""),
 
@@ -342,9 +342,8 @@ namespace Charlotte.GameCommons
 				string.Format("{0} x {1}", WinSzExp(DDConsts.Screen_W,  8), WinSzExp(DDConsts.Screen_H,  8)),
 				string.Format("{0} x {1}", WinSzExp(DDConsts.Screen_W,  9), WinSzExp(DDConsts.Screen_H,  9)),
 				string.Format("{0} x {1}", WinSzExp(DDConsts.Screen_W, 10), WinSzExp(DDConsts.Screen_H, 10)),
-				"フルスクリーン 画面に合わせる",
-				"フルスクリーン 縦横比維持",
-				"フルスクリーン 黒背景 (推奨)",
+				"フルスクリーン 画面に合わせる (非推奨)",
+				"フルスクリーン 縦横比を維持する (推奨)",
 				"戻る",
 			};
 
@@ -375,45 +374,10 @@ namespace Charlotte.GameCommons
 						break;
 
 					case 12:
-						{
-							int w = DDGround.MonitorRect.W;
-							int h = (DDConsts.Screen_H * DDGround.MonitorRect.W) / DDConsts.Screen_W;
-
-							if (DDGround.MonitorRect.H < h)
-							{
-								h = DDGround.MonitorRect.H;
-								w = (DDConsts.Screen_W * DDGround.MonitorRect.H) / DDConsts.Screen_H;
-
-								if (DDGround.MonitorRect.W < w)
-									throw new DDError();
-							}
-							DDMain.SetScreenSize(w, h);
-						}
+						DDMain.SetFullScreen();
 						break;
 
 					case 13:
-						{
-							int w = DDGround.MonitorRect.W;
-							int h = (DDConsts.Screen_H * DDGround.MonitorRect.W) / DDConsts.Screen_W;
-
-							if (DDGround.MonitorRect.H < h)
-							{
-								h = DDGround.MonitorRect.H;
-								w = (DDConsts.Screen_W * DDGround.MonitorRect.H) / DDConsts.Screen_H;
-
-								if (DDGround.MonitorRect.W < w)
-									throw new DDError();
-							}
-							DDMain.SetScreenSize(DDGround.MonitorRect.W, DDGround.MonitorRect.H);
-
-							DDGround.RealScreenDraw_L = (DDGround.MonitorRect.W - w) / 2;
-							DDGround.RealScreenDraw_T = (DDGround.MonitorRect.H - h) / 2;
-							DDGround.RealScreenDraw_W = w;
-							DDGround.RealScreenDraw_H = h;
-						}
-						break;
-
-					case 14:
 						goto endLoop;
 
 					default:

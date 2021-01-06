@@ -443,7 +443,9 @@ namespace Charlotte.Games
 					this.EnemyEffects.ExecuteAllTask();
 					this.PlayerEffects.ExecuteAllTask();
 
-					if (DDConfig.LOG_ENABLED && 1 <= DDInput.R.GetInput()) // 当たり判定表示(チート)
+					// 当たり判定表示
+					// -- デバッグ用だが、ボタン設定に割り当てがあるので、常に使えるようにする。
+					if (1 <= DDInput.R.GetInput())
 					{
 						this.Draw当たり判定();
 					}

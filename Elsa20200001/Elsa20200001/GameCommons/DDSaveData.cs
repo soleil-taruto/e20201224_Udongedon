@@ -29,6 +29,9 @@ namespace Charlotte.GameCommons
 				lines.Add("" + DDGround.RealScreenDraw_W);
 				lines.Add("" + DDGround.RealScreenDraw_H);
 
+				lines.Add("" + DDGround.UnfullScreen_W);
+				lines.Add("" + DDGround.UnfullScreen_H);
+
 				lines.Add("" + SCommon.ToLong(DDGround.MusicVolume * SCommon.IMAX));
 				lines.Add("" + SCommon.ToLong(DDGround.SEVolume * SCommon.IMAX));
 
@@ -118,6 +121,9 @@ namespace Charlotte.GameCommons
 				DDGround.RealScreenDraw_T = int.Parse(lines[c++]);
 				DDGround.RealScreenDraw_W = int.Parse(lines[c++]);
 				DDGround.RealScreenDraw_H = int.Parse(lines[c++]);
+
+				DDGround.UnfullScreen_W = int.Parse(lines[c++]);
+				DDGround.UnfullScreen_H = int.Parse(lines[c++]);
 
 				DDGround.MusicVolume = long.Parse(lines[c++]) / (double)SCommon.IMAX;
 				DDGround.SEVolume = long.Parse(lines[c++]) / (double)SCommon.IMAX;

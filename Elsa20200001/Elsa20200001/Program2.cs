@@ -45,9 +45,14 @@ namespace Charlotte
 
 			#region Charge To DDTouch
 
-			// DDCCResource のための Touch
-			// -- ロードされれば DDPictureUtils.Pictures に追加されるので、ここで呼ぶだけで良い。
-			TitleMenu.TouchWallDrawerResources();
+			// memo:
+			// ロードされれば DDPictureUtils.Pictures 等に追加されるので、ここで呼ぶだけで良い。
+			//TitleMenu.TouchWallDrawerResources();
+			// <-- AddAllPicture(); する場合だけの話
+			// AddAllPicture(); しない場合を想定して形を合わせる為に DDTouch.Add(TitleMenu.TouchWallDrawerResources); するべき
+
+			// DDCCResource 等のための Touch
+			DDTouch.Add(TitleMenu.TouchWallDrawerResources);
 
 			// 個別に設定
 			//DDTouch.Add(Ground.I.Picture.XXX);

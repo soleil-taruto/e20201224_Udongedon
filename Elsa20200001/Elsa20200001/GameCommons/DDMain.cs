@@ -174,6 +174,27 @@ namespace Charlotte.GameCommons
 			}
 		}
 
+		public static void SetFullScreen()
+		{
+			int w = DDGround.MonitorRect.W;
+			int h = (DDConsts.Screen_H * DDGround.MonitorRect.W) / DDConsts.Screen_W;
+
+			if (DDGround.MonitorRect.H < h)
+			{
+				h = DDGround.MonitorRect.H;
+				w = (DDConsts.Screen_W * DDGround.MonitorRect.H) / DDConsts.Screen_H;
+
+				if (DDGround.MonitorRect.W < w)
+					throw new DDError();
+			}
+			DDMain.SetScreenSize(DDGround.MonitorRect.W, DDGround.MonitorRect.H);
+
+			DDGround.RealScreenDraw_L = (DDGround.MonitorRect.W - w) / 2;
+			DDGround.RealScreenDraw_T = (DDGround.MonitorRect.H - h) / 2;
+			DDGround.RealScreenDraw_W = w;
+			DDGround.RealScreenDraw_H = h;
+		}
+
 		public static void SetScreenSize(int w, int h)
 		{
 			if (

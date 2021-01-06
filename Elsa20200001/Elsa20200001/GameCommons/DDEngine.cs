@@ -117,6 +117,26 @@ namespace Charlotte.GameCommons
 			}
 
 			DDGround.MainScreen.ChangeDrawScreen();
+
+			// ? ALT + ENTER -> フルスクリーン切り替え
+			if ((1 <= DDKey.GetInput(DX.KEY_INPUT_LALT) || 1 <= DDKey.GetInput(DX.KEY_INPUT_RALT)) && DDKey.GetInput(DX.KEY_INPUT_RETURN) == 1)
+			{
+				// ? 現在フルスクリーン -> フルスクリーン解除
+				if (
+					DDGround.RealScreen_W == DDGround.MonitorRect.W &&
+					DDGround.RealScreen_H == DDGround.MonitorRect.H
+					)
+				{
+					DDMain.SetScreenSize(DDGround.UnfullScreen_W, DDGround.UnfullScreen_H);
+				}
+				else // ? 現在フルスクリーンではない -> フルスクリーンにする
+				{
+					DDGround.UnfullScreen_W = DDGround.RealScreen_W;
+					DDGround.UnfullScreen_H = DDGround.RealScreen_H;
+
+					DDMain.SetFullScreen();
+				}
+			}
 		}
 
 		public static void FreezeInput(int frame = 1) // frame: 1 == このフレームのみ, 2 == このフレームと次のフレーム ...
