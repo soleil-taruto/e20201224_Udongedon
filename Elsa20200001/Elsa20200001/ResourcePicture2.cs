@@ -29,7 +29,7 @@ namespace Charlotte
 		public DDPicture[] D_LASERBLAST_00 = DDDerivations.GetAnimation_YX(Ground.I.Picture.P_KOAKUMA_P1, 128, 0, 64, 48, 1, 3).ToArray();
 		//public DDPicture D_LASER = DDDerivations.GetPicture(Ground.I.Picture.P_KOAKUMA_P1, 160, 144, 32, 56); // del
 		public DDPicture D_LASER = DDPictureLoaders.Mirror(
-			@"e20200003_dat\Shoot_old_Resource\jiki-koakuma-sozai\19740345_big_p1.png",
+			@"dat\Shoot_old_Resource\jiki-koakuma-sozai\19740345_big_p1.png",
 			new I4Rect(160, 144, 32, 56)
 			);
 		public DDPicture[] D_LASERFIRE_00 = DDDerivations.GetAnimation_YX(Ground.I.Picture.P_KOAKUMA_P1, 192, 0, 48, 72, 1, 3).ToArray();

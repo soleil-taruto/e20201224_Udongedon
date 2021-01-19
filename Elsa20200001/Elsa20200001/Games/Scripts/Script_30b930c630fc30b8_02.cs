@@ -18,8 +18,8 @@ namespace Charlotte.Games.Scripts
 			Ground.I.Music.MUS_STAGE_02.Play();
 
 			Game.I.Walls.Add(new Wall_Dark());
-			Game.I.Walls.Add(new Wall_B21001());
-			Game.I.Walls.Add(new Wall_B21002());
+			Game.I.Walls.Add(new Wall_21001());
+			Game.I.Walls.Add(new Wall_21002());
 
 			for (int c = 0; c < 60; c++)
 				yield return true;
@@ -111,11 +111,11 @@ namespace Charlotte.Games.Scripts
 				switch (Game.I.Player.PlayerWho)
 				{
 					case Player.PlayerWho_e.メディスン:
-						scenarioFile = @"e20200001_res\掛け合いシナリオ\メディスン_ルーミア.txt";
+						scenarioFile = @"res\掛け合いシナリオ\メディスン_ルーミア.txt";
 						break;
 
 					case Player.PlayerWho_e.小悪魔:
-						scenarioFile = @"e20200001_res\掛け合いシナリオ\小悪魔_ルーミア.txt";
+						scenarioFile = @"res\掛け合いシナリオ\小悪魔_ルーミア.txt";
 						break;
 
 					default:

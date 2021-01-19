@@ -9,15 +9,15 @@ using Charlotte.Games.Shots;
 using Charlotte.GameCommons;
 using Charlotte.Commons;
 
-namespace Charlotte.Games.Scripts
+namespace Charlotte.Games.Scripts.Tests
 {
 	public class Script_テスト2001 : Script
 	{
 		protected override IEnumerable<bool> E_EachFrame()
 		{
 			Game.I.Walls.Add(new Wall_Dark());
-			Game.I.Walls.Add(new Wall_B21001());
-			Game.I.Walls.Add(new Wall_B21002());
+			Game.I.Walls.Add(new Wall_21001());
+			Game.I.Walls.Add(new Wall_21002());
 
 			for (int c = 0; c < 180; c++)
 				yield return true;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Charlotte.Games;
 using Charlotte.Games.Scripts;
+using Charlotte.Games.Scripts.Tests;
 
 namespace Charlotte.Tests.Games
 {
@@ -40,12 +41,12 @@ namespace Charlotte.Tests.Games
 			//script = new Script_鍵山雛テスト0001();
 			//script = new Script_鍵山雛テスト0002();
 			//script = new Script_鍵山雛通しテスト0001();
-			script = new Script_ステージ_01();
 			//script = new Script_ルーミアテスト_0001();
 			//script = new Script_ルーミアテスト_0001小悪魔();
 			//script = new Script_ルーミアテスト_0002();
 			//script = new Script_ルーミアテスト_0003();
 			//script = new Script_ルーミアテスト_0004();
+			script = new Script_ステージ_01();
 
 			// ----
 

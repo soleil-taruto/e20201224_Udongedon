@@ -124,8 +124,6 @@ namespace Charlotte.GameCommons
 
 			PostSetScreenSize(DDGround.RealScreen_W, DDGround.RealScreen_H);
 
-			DDGround.GeneralResource = new DDGeneralResource();
-
 			// Font
 			{
 				//DDFontRegister.Add(@"e20200928_NovelAdv\Font\Genkai-Mincho-font\genkai-mincho.ttf");
@@ -168,7 +166,7 @@ namespace Charlotte.GameCommons
 
 		private static IntPtr GetAppIcon()
 		{
-			using (MemoryStream mem = new MemoryStream(DDResource.Load(@"e20200002_General\General\game_app.ico")))
+			using (MemoryStream mem = new MemoryStream(DDResource.Load(@"dat\General\game_app.ico")))
 			{
 				return new Icon(mem).Handle;
 			}

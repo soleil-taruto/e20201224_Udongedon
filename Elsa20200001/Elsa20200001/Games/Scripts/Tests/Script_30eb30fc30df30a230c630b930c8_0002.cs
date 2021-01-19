@@ -5,17 +5,17 @@ using System.Text;
 using Charlotte.Games.Walls;
 using Charlotte.Games.Enemies.ルーミアs;
 
-namespace Charlotte.Games.Scripts
+namespace Charlotte.Games.Scripts.Tests
 {
-	public class Script_ルーミアテスト_0004 : Script
+	public class Script_ルーミアテスト_0002 : Script
 	{
 		protected override IEnumerable<bool> E_EachFrame()
 		{
 			Game.I.Walls.Add(new Wall_Dark());
-			Game.I.Walls.Add(new Wall_B21001());
-			Game.I.Walls.Add(new Wall_B21002());
+			Game.I.Walls.Add(new Wall_21001());
+			Game.I.Walls.Add(new Wall_21002());
 
-			Game.I.Enemies.Add(new Enemy_ルーミア_02_04(GameConsts.FIELD_W / 2, GameConsts.FIELD_H / 16, false));
+			Game.I.Enemies.Add(new Enemy_ルーミア_02_04(GameConsts.FIELD_W / 2, GameConsts.FIELD_H / 16, true));
 
 			for (; ; )
 			{

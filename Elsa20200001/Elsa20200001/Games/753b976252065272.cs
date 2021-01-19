@@ -62,7 +62,7 @@ namespace Charlotte.Games
 
 			// Fill_Red
 			DDDraw.SetBright(1.0, 0.0, 0.0);
-			DDDraw.DrawRect(DDGround.GeneralResource.WhiteBox, new D4Rect(0, 0, GameConsts.FIELD_W, GameConsts.FIELD_H));
+			DDDraw.DrawRect(Ground.I.Picture.WhiteBox, new D4Rect(0, 0, GameConsts.FIELD_W, GameConsts.FIELD_H));
 			DDDraw.Reset();
 
 			for (int x = 0; x < PIECES_W; x++)

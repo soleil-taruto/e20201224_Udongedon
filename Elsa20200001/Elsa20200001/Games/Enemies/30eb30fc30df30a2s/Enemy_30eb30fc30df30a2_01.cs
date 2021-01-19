@@ -28,7 +28,7 @@ namespace Charlotte.Games.Enemies.ルーミアs
 		{
 			// ---- 環境制御 ----
 
-			Game.I.Walls.Add(new Wall_B22001());
+			Game.I.Walls.Add(new Wall_22001());
 
 			// ----
 

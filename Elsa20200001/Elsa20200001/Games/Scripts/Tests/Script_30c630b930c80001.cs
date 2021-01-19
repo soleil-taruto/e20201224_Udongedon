@@ -7,7 +7,7 @@ using Charlotte.Games.Walls;
 using Charlotte.Games.Enemies;
 using Charlotte.GameCommons;
 
-namespace Charlotte.Games.Scripts
+namespace Charlotte.Games.Scripts.Tests
 {
 	public class Script_テスト0001 : Script
 	{
@@ -24,8 +24,8 @@ namespace Charlotte.Games.Scripts
 
 			for (; ; ) // 無限ループ
 			{
-				Game.I.Walls.Add(new Wall_B21001());
-				Game.I.Walls.Add(new Wall_B21002());
+				Game.I.Walls.Add(new Wall_21001());
+				Game.I.Walls.Add(new Wall_21002());
 
 				for (int c = 0; c < 60; c++)
 					yield return true;

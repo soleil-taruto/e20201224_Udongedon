@@ -12,7 +12,7 @@ namespace Charlotte.GameCommons
 		// Donut3 側で新しい項目が追加されたら、手動で DatStrings.txt に追加する必要がある。
 		// ややっこしくなるので、プロジェクト独自の項目を追加したりなどしないこと。
 
-		private const string DatStringsFile = @"e20200001_res\DatStrings.txt";
+		private const string DatStringsFile = @"res\DatStrings.txt";
 
 		private static Dictionary<string, string> Name2Value = SCommon.CreateDictionary<string>();
 

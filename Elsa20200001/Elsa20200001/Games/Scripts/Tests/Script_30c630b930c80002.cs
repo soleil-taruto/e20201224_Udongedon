@@ -6,7 +6,7 @@ using Charlotte.Games.Walls;
 using Charlotte.Games.Enemies;
 using Charlotte.Games.Enemies.鍵山雛s;
 
-namespace Charlotte.Games.Scripts
+namespace Charlotte.Games.Scripts.Tests
 {
 	public class Script_テスト0002 : Script
 	{
@@ -23,7 +23,7 @@ namespace Charlotte.Games.Scripts
 			for (int c = 0; c < 90; c++)
 				yield return true;
 
-			foreach (bool v in ScriptCommon.掛け合い(new Scenario(@"e20200001_res\掛け合いシナリオ\小悪魔_鍵山雛.txt")))
+			foreach (bool v in ScriptCommon.掛け合い(new Scenario(@"res\掛け合いシナリオ\小悪魔_鍵山雛.txt")))
 				yield return v;
 
 			for (; ; )

@@ -114,7 +114,7 @@ namespace Charlotte.Games
 
 					DDDraw.SetAlpha(0.5);
 					DDDraw.SetBright(0, 0, 0);
-					DDDraw.DrawRect(DDGround.GeneralResource.WhiteBox, 0, 0, this.Curtain_W, DDConsts.Screen_H);
+					DDDraw.DrawRect(Ground.I.Picture.WhiteBox, 0, 0, this.Curtain_W, DDConsts.Screen_H);
 					DDDraw.Reset();
 
 					yield return true;
@@ -142,7 +142,7 @@ namespace Charlotte.Games
 					}
 				}
 
-				private const string PIC_PREFIX = @"e20200003_dat\dairi\67504816_p";
+				private const string PIC_PREFIX = @"dat\dairi\67504816_p";
 				private const string PIC_SUFFIX = ".png";
 				private const int PIC_INDEX_MIN = 0;
 				private const int PIC_INDEX_MAX = 10;
@@ -196,7 +196,7 @@ namespace Charlotte.Games
 				new string[]
 				{
 					"小悪魔",
-					"メディスン",
+					"メディスン・メランコリー",
 					"戻る",
 				},
 				0
@@ -231,7 +231,8 @@ namespace Charlotte.Games
 			{
 				string[] items = new string[]
 				{
-					"パッドのボタン設定",
+					"ゲームパッドのボタン設定",
+					"キーボードのキー設定",
 					"ウィンドウサイズ変更",
 					"ＢＧＭ音量",
 					"ＳＥ音量",
@@ -248,10 +249,14 @@ namespace Charlotte.Games
 						break;
 
 					case 1:
-						this.SimpleMenu.WindowSizeConfig();
+						this.SimpleMenu.PadConfig(true);
 						break;
 
 					case 2:
+						this.SimpleMenu.WindowSizeConfig();
+						break;
+
+					case 3:
 						this.SimpleMenu.VolumeConfig("ＢＧＭ音量", DDGround.MusicVolume, 0, 100, 1, 10, volume =>
 						{
 							DDGround.MusicVolume = volume;
@@ -261,7 +266,7 @@ namespace Charlotte.Games
 						);
 						break;
 
-					case 3:
+					case 4:
 						this.SimpleMenu.VolumeConfig("ＳＥ音量", DDGround.SEVolume, 0, 100, 1, 10, volume =>
 						{
 							DDGround.SEVolume = volume;
@@ -274,11 +279,11 @@ namespace Charlotte.Games
 						);
 						break;
 
-					case 4:
+					case 5:
 						Ground.I.自弾背景歪み ^= true;
 						break;
 
-					case 5:
+					case 6:
 						goto endMenu;
 
 					default:

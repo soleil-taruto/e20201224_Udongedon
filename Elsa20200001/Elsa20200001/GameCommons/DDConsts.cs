@@ -11,12 +11,9 @@ namespace Charlotte.GameCommons
 	{
 		public const string ConfigFile = "Config.conf";
 		public const string SaveDataFile = "SaveData.dat";
-		public const string ResourceFile_01 = "Resource.dat";
-		public const string ResourceFile_02 = "res.dat";
-		public const string ResourceDir_DevEnv_01 = @"..\..\..\..\dat";
-		public const string ResourceDir_DevEnv_02 = @"..\..\..\..\res";
-		public const string ResourceDir_InternalRelease_01 = @".\Data\Elsa";
-		public const string ResourceDir_InternalRelease_02 = @".\Data\res";
+		public const string ResourceFile = "Resource.dat";
+		public const string ResourceDir_DevEnv = @"..\..\..\..\dat";
+		public const string ResourceDir_InternalRelease = @".\Data";
 		public const string UserDatStringsFile = "Properties.dat";
 
 		public const int Screen_W = 960;

@@ -81,7 +81,7 @@ namespace Charlotte.GameCommons
 			else
 				DDDraw.SetAlpha(whiteLevel);
 
-			DDDraw.DrawRect(DDGround.GeneralResource.WhiteBox, 0, 0, DDConsts.Screen_W, DDConsts.Screen_H);
+			DDDraw.DrawRect(Ground.I.Picture.WhiteBox, 0, 0, DDConsts.Screen_W, DDConsts.Screen_H);
 			DDDraw.Reset();
 		}
 	}

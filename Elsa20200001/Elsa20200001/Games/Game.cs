@@ -8,6 +8,7 @@ using Charlotte.GameCommons;
 using Charlotte.GameCommons.Options;
 using Charlotte.Games.Enemies;
 using Charlotte.Games.Scripts;
+using Charlotte.Games.Scripts.Tests;
 using Charlotte.Games.Shots;
 using Charlotte.Games.Surfaces;
 using Charlotte.Games.Walls;
@@ -471,7 +472,7 @@ namespace Charlotte.Games
 
 					DDDraw.SetBright(0, 0, 0);
 					DDDraw.DrawRect(
-						DDGround.GeneralResource.WhiteBox,
+						Ground.I.Picture.WhiteBox,
 						GameConsts.FIELD_L - MARGIN,
 						GameConsts.FIELD_T - MARGIN,
 						GameConsts.FIELD_W + MARGIN * 2,
@@ -678,7 +679,7 @@ namespace Charlotte.Games
 
 				DDDraw.SetAlpha(0.2 + 0.2 * scene.Rate);
 				DDDraw.SetBright(1.0, 0.0, 0.0);
-				DDDraw.DrawRect(DDGround.GeneralResource.WhiteBox, new D4Rect(0, 0, DDConsts.Screen_W, DDConsts.Screen_H));
+				DDDraw.DrawRect(Ground.I.Picture.WhiteBox, new D4Rect(0, 0, DDConsts.Screen_W, DDConsts.Screen_H));
 				DDDraw.Reset();
 
 				DDEngine.EachFrame();
@@ -939,7 +940,7 @@ namespace Charlotte.Games
 		{
 			DDDraw.SetAlpha(0.8);
 			DDDraw.SetBright(0, 0, 0);
-			DDDraw.DrawRect(DDGround.GeneralResource.WhiteBox, new D4Rect(0, 0, GameConsts.FIELD_W, GameConsts.FIELD_H));
+			DDDraw.DrawRect(Ground.I.Picture.WhiteBox, new D4Rect(0, 0, GameConsts.FIELD_W, GameConsts.FIELD_H));
 			DDDraw.Reset();
 
 			const double A = 0.2;

@@ -98,7 +98,7 @@ namespace Charlotte.Games.Enemies.鍵山雛s
 				DDDraw.SetAlpha(a);
 				DDDraw.SetBright(color);
 				DDDraw.DrawFree(
-					DDGround.GeneralResource.WhiteBox,
+					Ground.I.Picture.WhiteBox,
 					ltx, lty,
 					rtx, rty,
 					rbx, rby,

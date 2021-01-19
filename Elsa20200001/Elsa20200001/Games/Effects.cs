@@ -82,7 +82,7 @@ namespace Charlotte.Games
 			{
 				DDDraw.SetAlpha(1.0 - scene.Rate);
 				DDDraw.SetBright(1.0, 0.5, 1.0);
-				DDDraw.DrawBegin(DDGround.GeneralResource.WhiteCircle, x - DDGround.ICamera.X, y - DDGround.ICamera.Y);
+				DDDraw.DrawBegin(Ground.I.Picture.WhiteCircle, x - DDGround.ICamera.X, y - DDGround.ICamera.Y);
 				DDDraw.DrawZoom(0.5 + 1.0 * scene.Rate);
 				DDDraw.DrawEnd();
 				DDDraw.Reset();
@@ -107,7 +107,7 @@ namespace Charlotte.Games
 				DDDraw.SetAlpha(0.5);
 				DDDraw.SetBright(0, 0, 0);
 				DDDraw.DrawRect_LTRB(
-					DDGround.GeneralResource.WhiteBox,
+					Ground.I.Picture.WhiteBox,
 					0,
 					DDConsts.Screen_H / 2 - (10 + 40 * scene.Rate),
 					DDConsts.Screen_W,
@@ -124,7 +124,7 @@ namespace Charlotte.Games
 				DDDraw.SetAlpha(0.5);
 				DDDraw.SetBright(0, 0, 0);
 				DDDraw.DrawRect_LTRB(
-					DDGround.GeneralResource.WhiteBox,
+					Ground.I.Picture.WhiteBox,
 					0,
 					DDConsts.Screen_H / 2 - 50,
 					DDConsts.Screen_W,
@@ -141,7 +141,7 @@ namespace Charlotte.Games
 				DDDraw.SetAlpha(0.5);
 				DDDraw.SetBright(0, 0, 0);
 				DDDraw.DrawRect_LTRB(
-					DDGround.GeneralResource.WhiteBox,
+					Ground.I.Picture.WhiteBox,
 					0,
 					DDConsts.Screen_H / 2 - (10 + 40 * (1.0 - scene.Rate)),
 					DDConsts.Screen_W,
@@ -161,7 +161,7 @@ namespace Charlotte.Games
 			{
 				DDDraw.SetAlpha(0.1);
 				DDDraw.SetBright(0.0, 1.0, 1.0);
-				DDDraw.DrawBegin(DDGround.GeneralResource.WhiteCircle, x - DDGround.ICamera.X, y - DDGround.ICamera.Y);
+				DDDraw.DrawBegin(Ground.I.Picture.WhiteCircle, x - DDGround.ICamera.X, y - DDGround.ICamera.Y);
 				DDDraw.DrawZoom(0.5 + 0.5 * (1.0 - scene.Rate));
 				DDDraw.DrawEnd();
 				DDDraw.Reset();

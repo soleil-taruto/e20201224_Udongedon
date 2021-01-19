@@ -17,8 +17,8 @@ namespace Charlotte.Games.Scripts
 			Ground.I.Music.MUS_STAGE_01.Play();
 
 			Game.I.Walls.Add(new Wall_Dark());
-			Game.I.Walls.Add(new Wall_B11001());
-			Game.I.Walls.Add(new Wall_B11002());
+			Game.I.Walls.Add(new Wall_11001());
+			Game.I.Walls.Add(new Wall_11002());
 
 			for (int c = 0; c < 60; c++)
 				yield return true;
@@ -102,7 +102,7 @@ namespace Charlotte.Games.Scripts
 			for (int c = 0; c < 200; c++)
 				yield return true;
 
-			Game.I.Walls.Add(new Wall_B12001());
+			Game.I.Walls.Add(new Wall_12001());
 
 			Game.I.Enemies.Add(new Enemy_0002(GameConsts.FIELD_W / 2, -100.0, 100, 10, 5, 200, 3, 0.0, 100.0, 1.0, 1.0, 0.98));
 			Game.I.Enemies.Add(new Enemy_0002(GameConsts.FIELD_W / 2, -100.0, 100, 10, 5, 200, 4, GameConsts.FIELD_W, 200.0, -1.0, 1.0, 0.98));
@@ -110,7 +110,7 @@ namespace Charlotte.Games.Scripts
 			for (int c = 0; c < 300; c++)
 				yield return true;
 
-			Game.I.Walls.Add(new Wall_B13001());
+			Game.I.Walls.Add(new Wall_13001());
 
 			for (int c = 0; c < 60; c++)
 				yield return true;
@@ -144,11 +144,11 @@ namespace Charlotte.Games.Scripts
 				switch (Game.I.Player.PlayerWho)
 				{
 					case Player.PlayerWho_e.メディスン:
-						scenarioFile = @"e20200001_res\掛け合いシナリオ\メディスン_鍵山雛.txt";
+						scenarioFile = @"res\掛け合いシナリオ\メディスン_鍵山雛.txt";
 						break;
 
 					case Player.PlayerWho_e.小悪魔:
-						scenarioFile = @"e20200001_res\掛け合いシナリオ\小悪魔_鍵山雛.txt";
+						scenarioFile = @"res\掛け合いシナリオ\小悪魔_鍵山雛.txt";
 						break;
 
 					default:

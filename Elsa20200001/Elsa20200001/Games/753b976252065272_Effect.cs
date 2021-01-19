@@ -197,7 +197,7 @@ namespace Charlotte.Games
 
 				DDDraw.SetBright(0, 0, 0);
 				DDDraw.DrawRect(
-					DDGround.GeneralResource.WhiteBox,
+					Ground.I.Picture.WhiteBox,
 					GameConsts.FIELD_L - MARGIN,
 					GameConsts.FIELD_T - MARGIN,
 					GameConsts.FIELD_W + MARGIN * 2,

@@ -14,7 +14,7 @@ namespace Charlotte.Games.Surfaces
 		private D2Point ActivePos = new D2Point(DDConsts.Screen_W / 2.0, DDConsts.Screen_H / 2.0);
 		private D2Point UnactivePos = new D2Point(DDConsts.Screen_W / 2.0, DDConsts.Screen_H / 2.0);
 		private bool PictureXReversed = false;
-		private DDPicture Picture = DDGround.GeneralResource.Dummy;
+		private DDPicture Picture = Ground.I.Picture.Dummy;
 		private bool Active = false;
 		private bool Ended = false;
 

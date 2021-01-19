@@ -7,7 +7,7 @@ using Charlotte.Games.Enemies;
 using Charlotte.Games.Enemies.鍵山雛s;
 using Charlotte.Games.Shots;
 
-namespace Charlotte.Games.Scripts
+namespace Charlotte.Games.Scripts.Tests
 {
 	/// <summary>
 	/// Script_サンプルゲーム用メイン0001
@@ -24,8 +24,8 @@ namespace Charlotte.Games.Scripts
 			Ground.I.Music.MUS_STAGE_01.Play();
 
 			Game.I.Walls.Add(new Wall_Dark());
-			Game.I.Walls.Add(new Wall_B21001());
-			Game.I.Walls.Add(new Wall_B21002());
+			Game.I.Walls.Add(new Wall_21001());
+			Game.I.Walls.Add(new Wall_21002());
 
 			for (int c = 0; c < 60; c++)
 				yield return true;
@@ -143,7 +143,7 @@ namespace Charlotte.Games.Scripts
 				for (int c = 0; c < 90; c++)
 					yield return true;
 
-				foreach (bool v in ScriptCommon.掛け合い(new Scenario(@"e20200001_res\掛け合いシナリオ\小悪魔_鍵山雛.txt")))
+				foreach (bool v in ScriptCommon.掛け合い(new Scenario(@"res\掛け合いシナリオ\小悪魔_鍵山雛.txt")))
 					yield return v;
 
 				boss.NextFlag = true;

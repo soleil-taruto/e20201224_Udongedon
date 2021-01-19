@@ -9,16 +9,8 @@ namespace Charlotte.GameCommons
 {
 	public static class DDResource
 	{
-		// ResourceFile_01 ... ロードのみ
-		// ResourceFile_02 ... ロードのみ(セーブ不可)
-
-		// ResourceDir_*_01 ... ロードのみ
-		// ResourceDir_*_02 ... ロード・セーブ
-
 		private static bool ReleaseMode = false;
-
-		private static string ResourceDir_01;
-		private static string ResourceDir_02;
+		private static string ResourceDir;
 
 		private class ResInfo
 		{
@@ -31,60 +23,55 @@ namespace Charlotte.GameCommons
 
 		public static void INIT()
 		{
-			if (File.Exists(DDConsts.ResourceFile_01)) // ? 外部リリース
+			if (File.Exists(DDConsts.ResourceFile)) // ? 外部リリース
 			{
 				ReleaseMode = true;
 			}
-			else if (Directory.Exists(DDConsts.ResourceDir_InternalRelease_01)) // ? 内部リリース
+			else if (Directory.Exists(DDConsts.ResourceDir_InternalRelease)) // ? 内部リリース
 			{
-				ResourceDir_01 = DDConsts.ResourceDir_InternalRelease_01;
-				ResourceDir_02 = DDConsts.ResourceDir_InternalRelease_02;
+				ResourceDir = DDConsts.ResourceDir_InternalRelease;
 			}
 			else // ? 開発環境
 			{
-				ResourceDir_01 = DDConsts.ResourceDir_DevEnv_01;
-				ResourceDir_02 = DDConsts.ResourceDir_DevEnv_02;
+				ResourceDir = DDConsts.ResourceDir_DevEnv;
 			}
 
 			if (ReleaseMode)
 			{
-				foreach (string resFile in new string[] { DDConsts.ResourceFile_01, DDConsts.ResourceFile_02 })
+				List<ResInfo> resInfos = new List<ResInfo>();
+
+				using (FileStream reader = new FileStream(DDConsts.ResourceFile, FileMode.Open, FileAccess.Read))
 				{
-					List<ResInfo> resInfos = new List<ResInfo>();
-
-					using (FileStream reader = new FileStream(resFile, FileMode.Open, FileAccess.Read))
+					while (reader.Position < reader.Length)
 					{
-						while (reader.Position < reader.Length)
+						int size = SCommon.ToInt(SCommon.Read(reader, 4));
+
+						if (size < 0)
+							throw new DDError();
+
+						resInfos.Add(new ResInfo()
 						{
-							int size = SCommon.ToInt(SCommon.Read(reader, 4));
+							ResFile = DDConsts.ResourceFile,
+							Offset = reader.Position,
+							Size = size,
+						});
 
-							if (size < 0)
-								throw new DDError();
-
-							resInfos.Add(new ResInfo()
-							{
-								ResFile = resFile,
-								Offset = reader.Position,
-								Size = size,
-							});
-
-							reader.Seek((long)size, SeekOrigin.Current);
-						}
+						reader.Seek((long)size, SeekOrigin.Current);
 					}
-					string[] files = SCommon.TextToLines(SCommon.ENCODING_SJIS.GetString(LoadFile(resInfos[0])));
+				}
+				string[] files = SCommon.TextToLines(SCommon.ENCODING_SJIS.GetString(LoadFile(resInfos[0])));
 
-					if (files.Length != resInfos.Count)
-						throw new DDError(files.Length + ", " + resInfos.Count);
+				if (files.Length != resInfos.Count)
+					throw new DDError(files.Length + ", " + resInfos.Count);
 
-					for (int index = 1; index < files.Length; index++)
-					{
-						string file = files[index];
+				for (int index = 1; index < files.Length; index++)
+				{
+					string file = files[index];
 
-						if (File2ResInfo.ContainsKey(file))
-							throw new DDError(file);
+					if (File2ResInfo.ContainsKey(file))
+						throw new DDError(file);
 
-						File2ResInfo.Add(file, resInfos[index]);
-					}
+					File2ResInfo.Add(file, resInfos[index]);
 				}
 			}
 		}
@@ -112,15 +99,11 @@ namespace Charlotte.GameCommons
 			}
 			else
 			{
-				string datFile = Path.Combine(ResourceDir_01, file);
+				string datFile = Path.Combine(ResourceDir, file);
 
 				if (!File.Exists(datFile))
-				{
-					datFile = Path.Combine(ResourceDir_02, file);
+					throw new Exception(datFile);
 
-					if (!File.Exists(datFile))
-						throw new Exception(datFile);
-				}
 				return File.ReadAllBytes(datFile);
 			}
 		}
@@ -133,7 +116,7 @@ namespace Charlotte.GameCommons
 			}
 			else
 			{
-				File.WriteAllBytes(Path.Combine(ResourceDir_02, file), fileData);
+				File.WriteAllBytes(Path.Combine(ResourceDir, file), fileData);
 			}
 		}
 
@@ -153,11 +136,7 @@ namespace Charlotte.GameCommons
 			}
 			else
 			{
-				files = SCommon.Concat(new IEnumerable<string>[]
-				{
-					Directory.GetFiles(ResourceDir_01, "*", SearchOption.AllDirectories).Select(file => SCommon.ChangeRoot(file, ResourceDir_01)),
-					Directory.GetFiles(ResourceDir_02, "*", SearchOption.AllDirectories).Select(file => SCommon.ChangeRoot(file, ResourceDir_02)),
-				});
+				files = Directory.GetFiles(ResourceDir, "*", SearchOption.AllDirectories).Select(file => SCommon.ChangeRoot(file, ResourceDir));
 
 				// '_' で始まるファイルの除去
 				// makeDDResourceFile は '_' で始まるファイルを含めない。

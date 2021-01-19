@@ -16,7 +16,7 @@ namespace Charlotte.Games.Walls
 			for (; ; )
 			{
 				DDDraw.SetBright(0, 0, 0);
-				DDDraw.DrawRect(DDGround.GeneralResource.WhiteBox, new D4Rect(0, 0, GameConsts.FIELD_W, GameConsts.FIELD_H));
+				DDDraw.DrawRect(Ground.I.Picture.WhiteBox, new D4Rect(0, 0, GameConsts.FIELD_W, GameConsts.FIELD_H));
 				DDDraw.Reset();
 
 				yield return true;

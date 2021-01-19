@@ -108,14 +108,14 @@ namespace Charlotte.Games.Enemies.ルーミアs
 			if (1 <= emp_h)
 			{
 				DDDraw.SetAlpha(a);
-				DDDraw.DrawRect(DDGround.GeneralResource.WhiteBox, L, T, W, emp_h);
+				DDDraw.DrawRect(Ground.I.Picture.WhiteBox, L, T, W, emp_h);
 				DDDraw.Reset();
 			}
 			if (1 <= rem_h)
 			{
 				DDDraw.SetAlpha(a);
 				DDDraw.SetBright(1.0, 0.0, 0.0);
-				DDDraw.DrawRect(DDGround.GeneralResource.WhiteBox, L, T + emp_h, W, rem_h);
+				DDDraw.DrawRect(Ground.I.Picture.WhiteBox, L, T + emp_h, W, rem_h);
 				DDDraw.Reset();
 			}
 		}
