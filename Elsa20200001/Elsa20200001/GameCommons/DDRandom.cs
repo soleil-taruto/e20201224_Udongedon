@@ -80,33 +80,12 @@ namespace Charlotte.GameCommons
 		}
 
 		/// <summary>
-		/// [0,1]
-		/// 0以上,1以下
+		/// 0以上1以下の乱数を返す。
 		/// </summary>
 		/// <returns>乱数</returns>
 		public double Real()
 		{
 			return this.Next() / (double)uint.MaxValue;
-		}
-
-		/// <summary>
-		/// [0,1)
-		/// 0以上,1未満
-		/// </summary>
-		/// <returns>乱数</returns>
-		public double Real2()
-		{
-			return this.Next() / (double)(uint.MaxValue + 1L);
-		}
-
-		/// <summary>
-		/// (0,1)
-		/// 0より大きい,1未満
-		/// </summary>
-		/// <returns>乱数</returns>
-		public double Real3()
-		{
-			return this.Next() / (double)(uint.MaxValue + 1L) + 0.5;
 		}
 
 		public uint GetUInt(uint modulo)

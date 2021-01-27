@@ -534,8 +534,8 @@ namespace Charlotte.Games.Enemies
 
 				for (int index = 0; index < num; index++)
 				{
-					double rot = DDUtils.Random.Real2() * Math.PI * 2.0;
-					double r = rMin + DDUtils.Random.Real2() * rBnd;
+					double rot = DDUtils.Random.Real() * Math.PI * 2.0;
+					double r = rMin + DDUtils.Random.Real() * rBnd;
 
 					addingItems[index] = new Enemy_Item(
 						enemy.X + Math.Cos(rot) * r,

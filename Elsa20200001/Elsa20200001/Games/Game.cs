@@ -131,6 +131,10 @@ namespace Charlotte.Games
 						break;
 					}
 				}
+				if (DDConfig.LOG_ENABLED && DDKey.GetInput(DX.KEY_INPUT_RETURN) == 1)
+				{
+					this.DebugPause();
+				}
 
 				this.LastInput = this.Input; // 前回のプレイヤー入力を退避
 
@@ -616,6 +620,9 @@ namespace Charlotte.Games
 		private bool Pause_RestartGame = false;
 		private bool Pause_ReturnToTitleMenu = false;
 
+		/// <summary>
+		/// ポーズメニュー
+		/// </summary>
 		private void Pause()
 		{
 			DDMain.KeepMainScreen();
@@ -633,7 +640,7 @@ namespace Charlotte.Games
 			for (; ; )
 			{
 				selectIndex = simpleMenu.Perform(
-					"ポーズメニュー(仮)",
+					"PAUSE",
 					new string[]
 					{
 						"最初からやり直す",
@@ -665,6 +672,73 @@ namespace Charlotte.Games
 			}
 		endLoop:
 			DDEngine.FreezeInput();
+
+			// 寧ろやりにくい
+			//DDInput.A.FreezeInputUntilRelease = true;
+			//DDInput.B.FreezeInputUntilRelease = true;
+		}
+
+		/// <summary>
+		/// ポーズメニュー(デバッグ用)
+		/// </summary>
+		private void DebugPause()
+		{
+			DDMain.KeepMainScreen();
+
+			DDSimpleMenu simpleMenu = new DDSimpleMenu()
+			{
+				Color = new I3Color(255, 255, 255),
+				BorderColor = new I3Color(0, 128, 64),
+				WallPicture = DDGround.KeptMainScreen.ToPicture(),
+				WallCurtain = -0.5,
+			};
+
+			int selectIndex = 0;
+
+			for (; ; )
+			{
+				selectIndex = simpleMenu.Perform(
+					"デバッグ用メニュー",
+					new string[]
+					{
+						"----",
+						"----",
+						"----",
+						"ゲームに戻る",
+					},
+					selectIndex,
+					true,
+					true
+					);
+
+				switch (selectIndex)
+				{
+					case 0:
+						// none
+						break;
+
+					case 1:
+						// none
+						break;
+
+					case 2:
+						// none
+						break;
+
+					case 3:
+						goto endLoop;
+
+					default:
+						throw null; // never
+				}
+				//DDEngine.EachFrame(); // 不要
+			}
+		endLoop:
+			DDEngine.FreezeInput();
+
+			// 寧ろやりにくい
+			//DDInput.A.FreezeInputUntilRelease = true;
+			//DDInput.B.FreezeInputUntilRelease = true;
 		}
 
 		private void DeadPlayerMoment()

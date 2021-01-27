@@ -22,8 +22,8 @@ namespace Charlotte.Games.Enemies
 		}
 
 		public double YAdd = -4.0;
-		public double Rot = DDUtils.Random.Real2() * Math.PI * 2.0;
-		public double RotAdd = DDUtils.Random.Real2() * 0.01;
+		public double Rot = DDUtils.Random.Real() * Math.PI * 2.0;
+		public double RotAdd = DDUtils.Random.Real() * 0.01;
 
 		protected override IEnumerable<bool> E_Draw()
 		{

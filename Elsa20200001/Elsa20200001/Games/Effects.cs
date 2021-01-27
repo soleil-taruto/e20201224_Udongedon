@@ -42,7 +42,7 @@ namespace Charlotte.Games
 
 		public static IEnumerable<bool> EnemyDead(double x, double y)
 		{
-			double r = DDUtils.Random.Real2() * Math.PI * 2.0;
+			double r = DDUtils.Random.Real() * Math.PI * 2.0;
 
 			foreach (DDScene scene in DDSceneUtils.Create(19))
 			{

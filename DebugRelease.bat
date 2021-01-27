@@ -4,6 +4,7 @@ C:\Factory\Tools\RDMD.exe /RM tmp
 ROBOCOPY dat out\Data /MIR
 
 CALL Confuse.bat
+CALL Copy_rt.bat
 COPY /B Elsa20200001\Elsa20200001\bin\Release\Elsa20200001.exe-confused out\Game.exe
 COPY /B Elsa20200001\Elsa20200001\bin\Release\DxLib.dll out
 COPY /B Elsa20200001\Elsa20200001\bin\Release\DxLib_x64.dll out
