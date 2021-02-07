@@ -139,19 +139,16 @@ namespace Charlotte.GameCommons
 				if (this.BorderColor != null)
 					DDPrint.SetBorder(this.BorderColor.Value);
 
+				DDPrint.SetPrint(DDConsts.Screen_W - 45, 2);
+				DDPrint.Print("[M:" + (this.MouseUsable ? "E" : "D") + "]");
+
 				DDPrint.SetPrint(this.X, this.Y, this.YStep);
 				//DDPrint.SetPrint(16, 16, 32); // old
-				DDPrint.Print(
-					DDConfig.LOG_ENABLED ?
-					title + "　(Mouse=" + this.MouseUsable + ")" :
-					title
-					);
-				DDPrint.PrintRet();
+				DDPrint.PrintLine(title);
 
 				for (int c = 0; c < items.Length; c++)
 				{
-					DDPrint.Print(string.Format("[{0}] {1}", selectIndex == c ? ">" : " ", items[c]));
-					DDPrint.PrintRet();
+					DDPrint.PrintLine(string.Format("[{0}] {1}", selectIndex == c ? ">" : " ", items[c]));
 				}
 				DDPrint.Reset();
 
@@ -424,7 +421,7 @@ namespace Charlotte.GameCommons
 							}
 							DDPrint.PrintRet();
 						}
-						DDPrint.PrintLine("★　カーソルの機能に割り当てるキーを押して下さい。");
+						DDPrint.PrintLine("★　カーソルの指す機能に割り当てるキーを押して下さい。");
 						DDPrint.PrintLine("★　画面を左クリックするとキーの割り当てをスキップします。(非推奨)");
 						DDPrint.PrintLine("★　画面を右クリックするとキャンセルします。");
 
@@ -502,7 +499,7 @@ namespace Charlotte.GameCommons
 							}
 							DDPrint.PrintRet();
 						}
-						DDPrint.PrintLine("★　カーソルの機能に割り当てるボタンを押して下さい。");
+						DDPrint.PrintLine("★　カーソルの指す機能に割り当てるボタンを押して下さい。");
 						DDPrint.PrintLine("★　[Z]キーを押すとボタンの割り当てをスキップします。");
 						DDPrint.PrintLine("★　スペースキーを押すとキャンセルします。");
 
@@ -680,23 +677,27 @@ namespace Charlotte.GameCommons
 					DDPrint.SetBorder(this.BorderColor.Value);
 
 				DDPrint.SetPrint(this.X, this.Y, this.YStep);
-				DDPrint.Print(title);
-				DDPrint.PrintRet();
+				DDPrint.PrintLine(title);
+				DDPrint.PrintLine(string.Format("[{0}]　最小={1}　最大={2}", value, minval, maxval));
 
-				DDPrint.Print(string.Format("[{0}]　最小={1}　最大={2}", value, minval, maxval));
-				DDPrint.PrintRet();
-
-				DDPrint.Print("★　左＝下げる");
-				DDPrint.PrintRet();
-				DDPrint.Print("★　右＝上げる");
-				DDPrint.PrintRet();
-				DDPrint.Print("★　下＝速く下げる");
-				DDPrint.PrintRet();
-				DDPrint.Print("★　上＝速く上げる");
-				DDPrint.PrintRet();
-				DDPrint.Print("★　調整が終わったら決定ボタンを押して下さい。");
-				DDPrint.PrintRet();
-
+				if (this.MouseUsable)
+				{
+					DDPrint.PrintLine("★　ホイール上・右＝上げる");
+					DDPrint.PrintLine("★　ホイール下・左＝下げる");
+					DDPrint.PrintLine("★　上＝速く上げる");
+					DDPrint.PrintLine("★　下＝速く下げる");
+					DDPrint.PrintLine("★　調整が終わったら左クリック・決定ボタンを押して下さい。");
+					DDPrint.PrintLine("★　右クリック・キャンセルボタンを押すと変更をキャンセルします。");
+				}
+				else
+				{
+					DDPrint.PrintLine("★　右＝上げる");
+					DDPrint.PrintLine("★　左＝下げる");
+					DDPrint.PrintLine("★　上＝速く上げる");
+					DDPrint.PrintLine("★　下＝速く下げる");
+					DDPrint.PrintLine("★　調整が終わったら決定ボタンを押して下さい。");
+					DDPrint.PrintLine("★　キャンセルボタンを押すと変更をキャンセルします。");
+				}
 				DDEngine.EachFrame();
 			}
 			DDEngine.FreezeInput();
