@@ -698,6 +698,8 @@ namespace Charlotte.GameCommons
 					DDPrint.PrintLine("★　調整が終わったら決定ボタンを押して下さい。");
 					DDPrint.PrintLine("★　キャンセルボタンを押すと変更をキャンセルします。");
 				}
+				DDPrint.Reset();
+
 				DDEngine.EachFrame();
 			}
 			DDEngine.FreezeInput();
